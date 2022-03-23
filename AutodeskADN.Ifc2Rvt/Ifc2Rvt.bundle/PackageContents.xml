@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ApplicationPackage Name="RevitDesignAutomation" Description="IFC to RVT Addin" Author="eason.kang@autodesk.com">
+	<CompanyDetails Name="Autodesk, Inc" Url="http://learnforge.autodesk.io" Email="forge.help@autodesk.com"/>
+	<Components Description="Resave IFC to RVT">
+		<RuntimeRequirements SeriesMax="R2022" SeriesMin="R2022" Platform="Revit" OS="Win64"/>
+		<ComponentEntry LoadOnRevitStartup="True" LoadOnCommandInvocation="False" AppDescription="Resave IFC to RVT" ModuleName="./Contents/ifc2Rvt.addin" Version="1.0.0" AppName="ifc2Rvt"/>
+	</Components>
+</ApplicationPackage>

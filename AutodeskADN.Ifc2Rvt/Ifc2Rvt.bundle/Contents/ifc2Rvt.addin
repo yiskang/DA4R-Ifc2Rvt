@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+	<AddIn Type="DBApplication">
+		<Name>ifc2Rvt</Name>
+		<FullClassName>Autodesk.ADN.Ifc2Rvt.MainApp</FullClassName>
+		<Text>ifc2Rvt</Text>
+		<Description>Resave IFC to RVT</Description>
+		<VisibilityMode>AlwaysVisible</VisibilityMode>
+		<Assembly>.\ifc2Rvt.dll</Assembly>
+		<AddInId>788362E3-F5B9-41A5-9615-3977676824B0</AddInId>
+		<VendorId>ADSK</VendorId>
+		<VendorDescription>Autodesk, Inc, www.autodesk.com</VendorDescription>
+	</AddIn>
+</RevitAddIns>
