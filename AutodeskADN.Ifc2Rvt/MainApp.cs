@@ -46,6 +46,10 @@ namespace Autodesk.ADN.Ifc2Rvt
         private void HandleDesignAutomationReadyEvent(object sender, DesignAutomationReadyEventArgs e)
         {
             LogTrace("Design Automation Ready event triggered...");
+
+            // Hook up the CustomFailureHandling failure processor.
+            Application.RegisterFailuresProcessor(new OpenIfcFailuresProcessor());
+
             e.Succeeded = true;
             e.Succeeded = this.DoTask(e.DesignAutomationData);
         }
@@ -127,7 +131,7 @@ namespace Autodesk.ADN.Ifc2Rvt
         /// <summary>
         /// This will appear on the Design Automation output
         /// </summary>
-        private static void LogTrace(string format, params object[] args)
+        public static void LogTrace(string format, params object[] args)
         {
 #if DEBUG
             System.Diagnostics.Trace.WriteLine(string.Format(format, args));
