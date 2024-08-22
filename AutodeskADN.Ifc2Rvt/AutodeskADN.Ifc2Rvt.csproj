@@ -35,7 +35,7 @@
       <HintPath>..\packages\Autodesk.Forge.DesignAutomation.Revit.2022.0.2\lib\net48\DesignAutomationBridge.dll</HintPath>
     </Reference>
     <Reference Include="RevitAPI">
-      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2022\RevitAPI.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2023\RevitAPI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -67,7 +67,7 @@ del /F "$(TargetDir)Ifc2Rvt.zip"
 "C:\Program Files\7-Zip\7z.exe" a -tzip "$(TargetDir)Ifc2Rvt.zip" "$(ProjectDir)Ifc2Rvt.bundle\" -xr0!*.pdb
 
 
-if exist "$(AppData)\Autodesk\REVIT\Addins\2022" copy "$(ProjectDir)Ifc2Rvt.bundle\Contents\*.addin" "$(AppData)\Autodesk\REVIT\Addins\2022"
-if exist "$(AppData)\Autodesk\REVIT\Addins\2022" copy "$(ProjectDir)$(OutputPath)*.dll" "$(AppData)\Autodesk\REVIT\Addins\2022"</PostBuildEvent>
+if exist "$(AppData)\Autodesk\REVIT\Addins\2023" copy "$(ProjectDir)Ifc2Rvt.bundle\Contents\*.addin" "$(AppData)\Autodesk\REVIT\Addins\2023"
+if exist "$(AppData)\Autodesk\REVIT\Addins\2023" copy "$(ProjectDir)$(OutputPath)*.dll" "$(AppData)\Autodesk\REVIT\Addins\2023"</PostBuildEvent>
   </PropertyGroup>
 </Project>

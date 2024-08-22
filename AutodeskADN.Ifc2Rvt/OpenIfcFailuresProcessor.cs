@@ -55,27 +55,30 @@ namespace Autodesk.ADN.Ifc2Rvt
                     return FailureProcessingResult.ProceedWithRollBack;
                 }
 
-                string fResolutionCaption = f.GetDefaultResolutionCaption();
-                ICollection<ElementId> failingElementIds = f.GetFailingElementIds();
-
                 FailureSeverity fseverity = data.GetSeverity();
 
-                if (fseverity == FailureSeverity.Error && failingElementIds.Count > 0)
+                if (fseverity == FailureSeverity.Error)
                 {
-                    if (fResolutionCaption.Equals("Delete Element(s)"))
-                    {
-                        MainApp.LogTrace("FailureInstruction `Delete Element(s)` found. It will delete failling elements to resolve the failure.");
-                        MainApp.LogTrace($"Following elements will be delted: {string.Join(",", failingElementIds.Select(eid => eid.IntegerValue))}");
-                    }
+                    ICollection<ElementId> failingElementIds = f.GetFailingElementIds();
 
-                    if (fResolutionCaption.Equals("Delete Instance(s)"))
+                    if (failingElementIds.Count > 0)
                     {
-                        MainApp.LogTrace("FailureInstruction `Delete Instance(s)` found. It will delete failling elements to resolve the failure.");
-                        MainApp.LogTrace($"Following elements will be delted: {string.Join(",", failingElementIds.Select(eid => eid.IntegerValue))}");
-                    }
+                        string fResolutionCaption = f.GetDefaultResolutionCaption();
+                        if (fResolutionCaption.Equals("Delete Element(s)"))
+                        {
+                            MainApp.LogTrace("FailureInstruction `Delete Element(s)` found. It will delete failling elements to resolve the failure.");
+                            MainApp.LogTrace($"Following elements will be delted: {string.Join(",", failingElementIds.Select(eid => eid.IntegerValue))}");
+                        }
 
-                    hasError = true;
-                    data.ResolveFailure(f);
+                        if (fResolutionCaption.Equals("Delete Instance(s)"))
+                        {
+                            MainApp.LogTrace("FailureInstruction `Delete Instance(s)` found. It will delete failling elements to resolve the failure.");
+                            MainApp.LogTrace($"Following elements will be delted: {string.Join(",", failingElementIds.Select(eid => eid.IntegerValue))}");
+                        }
+
+                        hasError = true;
+                        data.ResolveFailure(f);
+                    }
                 }
 
                 // If an attempt to resolve failures are made then return the result with ProceedWithCommit
